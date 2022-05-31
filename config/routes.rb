@@ -2,11 +2,15 @@ Spree::Core::Engine.add_routes do
   scope '(:locale)', locale: /#{Spree.available_locales.join('|')}/, defaults: { locale: nil } do
     root to: 'home#index'
 
-    resources :products, only: [:index, :show], path: '/products'
+    # COMMENTED [VP]
+    # resources :products, only: [:index, :show], path: '/products'
+    # END
 
     get '/products/:id/related', to: 'products#related'
     # route globbing for pretty nested taxon and product paths
-    get '/t/*id', to: 'taxons#show', as: :nested_taxons
+    # COMMENTED [VP]
+    # get '/t/*id', to: 'taxons#show', as: :nested_taxons
+    # END
     get '/product_carousel/:id', to: 'taxons#product_carousel'
 
     # non-restful checkout stuff
